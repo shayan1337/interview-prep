@@ -2,6 +2,7 @@ package arrays.sort;
 
 /**
  * Insertion sort -> sorts array into ascending order. In place, O(N*N)
+ * https://www.youtube.com/watch?v=i-SKeOcBwko&t=408s
  */
 
 public class InsertionSort {
