@@ -1,0 +1,25 @@
+ARRAYS:
+
+* Advantages of using arrays:
+
+1. Quick insertion O(1)
+2. Very fast access if index known O(1)
+
+* Disadvantages of using arrays:
+
+1. Slow search O(N)
+2. Slow deletion O(N)
+3. Fixed size
+
+
+ORDERED ARRAYS:
+
+* Advantages of using arrays:
+
+1. Quicker search than unsorted arrays O(log N)
+
+* Disadvantages of using arrays:
+
+1. Slow insertion O(N)
+2. Slow deletion O(N)
+3. Fixed size
