@@ -1,0 +1,1 @@
+This project contains solved problems of data structures and algorithms that often come up in technical interviews 
