@@ -6,11 +6,10 @@ package arrays.sort;
  */
 
 public class MergeSort {
-    public static int[] sort(int[] nums) {
+    public static void sort(int[] nums) {
         if (nums == null || nums.length == 0)
-            return new int[]{};
+            return;
         mergeSort(nums);
-        return nums;
     }
 
     private static void mergeSort(int[] nums) {

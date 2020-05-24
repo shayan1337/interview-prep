@@ -7,31 +7,34 @@ class MergeSortTest {
 
     @Test
     void testSortWhenArrayIsNull() {
-        int[] res = MergeSort.sort(null);
-        Assertions.assertArrayEquals(new int[]{}, res);
+        MergeSort.sort(null);
     }
 
     @Test
     void testSortWhenArrayIsEmpty() {
-        int[] res = MergeSort.sort(new int[]{});
-        Assertions.assertArrayEquals(new int[]{}, res);
+        int[] nums = {};
+        MergeSort.sort(nums);
+        Assertions.assertArrayEquals(new int[]{}, nums);
     }
 
     @Test
     void testSortWhenArrayWith2Elements() {
-        int[] res = MergeSort.sort(new int[]{4,1});
-        Assertions.assertArrayEquals(new int[]{1,4}, res);
+        int[] nums = {4, 1};
+        MergeSort.sort(nums);
+        Assertions.assertArrayEquals(new int[]{1,4}, nums);
     }
 
     @Test
     void testSortWhenArrayWith5Elements() {
-        int[] res = MergeSort.sort(new int[]{9, 6, 5, 4});
-        Assertions.assertArrayEquals(new int[]{4, 5, 6, 9}, res);
+        int[] nums = {9, 6, 5, 4};
+        MergeSort.sort(nums);
+        Assertions.assertArrayEquals(new int[]{4, 5, 6, 9}, nums);
     }
 
     @Test
     void testSortWhenArrayWithDuplicateElements() {
-        int[] res = MergeSort.sort(new int[]{9, 6, 5, 4, 5});
-        Assertions.assertArrayEquals(new int[]{4, 5, 5, 6, 9}, res);
+        int[] nums = {9, 6, 5, 4, 5};
+        MergeSort.sort(nums);
+        Assertions.assertArrayEquals(new int[]{4, 5, 5, 6, 9}, nums);
     }
 }

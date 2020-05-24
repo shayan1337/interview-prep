@@ -7,6 +7,11 @@ import org.junit.jupiter.api.Test;
 class QuickSortTest {
 
     @Test
+    void testSortWhenArrayIsNull() {
+        QuickSort.sort(null);
+    }
+
+    @Test
     void testSortWhenArrayIsEmpty() {
         int[] nums = {};
         QuickSort.sort(nums);

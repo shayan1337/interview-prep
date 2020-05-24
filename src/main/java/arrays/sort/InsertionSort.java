@@ -7,9 +7,9 @@ package arrays.sort;
 
 public class InsertionSort {
 
-    public static int[] sort(int[] nums) {
+    public static void sort(int[] nums) {
         if (nums == null || nums.length == 0)
-            return new int[]{};
+            return;
 
 
         for(int i=0; i<nums.length; i++) {
@@ -23,6 +23,5 @@ public class InsertionSort {
                 j--;
             }
         }
-        return nums;
     }
 }
