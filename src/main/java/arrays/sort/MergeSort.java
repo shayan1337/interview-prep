@@ -1,7 +1,7 @@
 package arrays.sort;
 
 /**
- * Mergesort -> sort array in increasing order. Runtime - O(N*logN), Space -
+ * Mergesort -> sort array in increasing order. Runtime - O(N*logN), Space - O(N)
  * https://www.youtube.com/watch?v=TzeBrDU-JaY
  */
 
