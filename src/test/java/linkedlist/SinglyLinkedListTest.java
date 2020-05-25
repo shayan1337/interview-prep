@@ -157,7 +157,7 @@ class SinglyLinkedListTest {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
         singlyLinkedList.addFirst(1);
         singlyLinkedList.addFirst(2);
-        boolean deleted = singlyLinkedList.deleteAt(0);
+        boolean deleted = singlyLinkedList.deleteFirst();
 
         Assertions.assertTrue(deleted);
         Assertions.assertArrayEquals(new int[]{1}, singlyLinkedList.values());
