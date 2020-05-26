@@ -1,5 +1,6 @@
-package leetcode;
+package leetcode.easy;
 
+import leetcode.easy.MissingNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
