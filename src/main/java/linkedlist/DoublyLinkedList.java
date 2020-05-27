@@ -73,7 +73,35 @@ public class DoublyLinkedList {
      * @param pos is the position where the data is to be inserted
      */
     public void insert(int data, int pos) {
+        if (pos < 0 || pos > numberOfElements)
+            return;
 
+        int currentPosition = 0;
+        Node current = head;
+        Node previous = head;
+
+        while(currentPosition < pos) {
+            previous = current;
+            current = current.next;
+            currentPosition++;
+        }
+
+        if (currentPosition == 0) {
+            add(data);
+            return;
+        }
+
+        Node newNode = new Node(data);
+
+        newNode.next = current;
+        newNode.prev = previous;
+        previous.next = newNode;
+
+        if (current != null) {
+            current.prev = newNode;
+        }
+
+        numberOfElements++;
     }
 
 

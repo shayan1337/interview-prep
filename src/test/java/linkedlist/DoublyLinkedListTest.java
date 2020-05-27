@@ -1,5 +1,6 @@
 package linkedlist;
 
+import com.sun.xml.internal.ws.policy.AssertionSet;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -95,4 +96,66 @@ class DoublyLinkedListTest {
         Assertions.assertArrayEquals(new int[]{40, 30}, doublyLinkedList.values());
     }
 
+    @Test
+    void testInsertShouldDoNothingForNegativePos() {
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        doublyLinkedList.insert(1, -1);
+
+        Assertions.assertArrayEquals(new int[]{}, doublyLinkedList.values());
+    }
+
+    @Test
+    void testInsertShouldDoNothingForPosGreaterThanNumberOfElems() {
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        doublyLinkedList.add(1);
+
+        doublyLinkedList.insert(2,2);
+
+        Assertions.assertArrayEquals(new int[]{1}, doublyLinkedList.values());
+    }
+
+    @Test
+    void testInsertShouldInsertAnElementAtIndex0InAnEmptyList() {
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+
+        doublyLinkedList.insert(1,0);
+
+        Assertions.assertArrayEquals(new int[]{1}, doublyLinkedList.values());
+    }
+
+    @Test
+    void testInsertShouldInsertAnElementAtIndex0InANonEmptyList() {
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        doublyLinkedList.add(1);
+        doublyLinkedList.add(2);
+        doublyLinkedList.add(3);
+
+        doublyLinkedList.insert(4,0);
+
+        Assertions.assertArrayEquals(new int[]{4, 3, 2, 1}, doublyLinkedList.values());
+    }
+
+    @Test
+    void testInsertShouldInsertAnElementAtMiddleInANonEmptyList() {
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        doublyLinkedList.add(1);
+        doublyLinkedList.add(2);
+        doublyLinkedList.add(3);
+
+        doublyLinkedList.insert(4,1);
+
+        Assertions.assertArrayEquals(new int[]{3, 4, 2, 1}, doublyLinkedList.values());
+    }
+
+    @Test
+    void testInsertShouldInsertAnElementAtTheEndInANonEmptyList() {
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        doublyLinkedList.add(1);
+        doublyLinkedList.add(2);
+        doublyLinkedList.add(3);
+
+        doublyLinkedList.insert(4,3);
+
+        Assertions.assertArrayEquals(new int[]{3, 2, 1, 4}, doublyLinkedList.values());
+    }
 }
