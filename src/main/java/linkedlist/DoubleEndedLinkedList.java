@@ -1,14 +1,21 @@
 package linkedlist;
 
+
 /**
- *  A double ended linked list has 'head' and 'tail' pointers. Head points at beginnning of the list. Tail points at the end of the list. This list is singly linked list.
+ *  A double ended linked list is a doubly linked list that has 'head' and 'tail' pointers. Head points at beginning of the list. Tail points at the end of the list.
  *  Usage : Can be used as a queue implementation
+ *  Apis include:
+ *  1. addFirst(int) -> adds an element to the beginning of the list
+ *  2. removeFirst() -> removes an element from the beginning of the list
+ *  3. addLast(int) -> adds an element to the end of the list
+ *  4. removeLast() -> removes an element from the end of the list
  */
 public class DoubleEndedLinkedList {
 
     static class Node {
         int data;
         Node next;
+        Node prev;
 
         Node(int data) {
             this.data = data;
@@ -19,6 +26,11 @@ public class DoubleEndedLinkedList {
     private Node tail;
     private int numberOfElements = 0;
 
+
+    /**
+     * Adds an element to the head of the list
+     * @param data is the data to be inserted at the head of the list
+     */
     public void addFirst(int data) {
         Node newNode = new Node(data);
 
@@ -29,15 +41,21 @@ public class DoubleEndedLinkedList {
             return;
         }
 
+        newNode.next = head;
+        head.prev = newNode;
+        head = newNode;
+        numberOfElements++;
+    }
+
+    public void removeFirst() {
 
     }
 
-    public void removeLast() {}
 
-    public boolean deleteAt(int position) {
-        return true;
-    }
-
+    /**
+     * Returns the elements in the list traversing from head
+     * @return <tt>int[]</tt> of elements in the list traversing from head
+     */
     public int[] values() {
         int[] values = new int[numberOfElements];
         int index = 0;
