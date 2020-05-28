@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.easy;
 
 /**
  * 112. Path Sum -> (https://leetcode.com/problems/path-sum/)
