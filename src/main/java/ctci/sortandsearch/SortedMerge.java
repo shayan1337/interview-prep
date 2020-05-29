@@ -6,7 +6,7 @@ package ctci.sortandsearch;
  */
 public class SortedMerge {
 
-    // TODO do in O(A+B) instead of O(AB)
+    // Runs in O(AB)
     public static void sortedMerge(int A[], int[] B, int lastIndexA) {
 
         for(int b : B) {
@@ -17,6 +17,24 @@ public class SortedMerge {
                 indexA--;
             }
             lastIndexA++;
+        }
+    }
+
+    // Runs in O(A + B)
+    public static void optimisedSortedMerge(int A[], int[] B, int lastIndexA) {
+        int indexA = lastIndexA;
+        int indexB = B.length - 1;
+        int indexToBeMerged = A.length - 1;
+
+        while(indexToBeMerged >= 0) {
+            if (indexA >= 0 && A[indexA] > B[indexB]) {
+                A[indexToBeMerged] = A[indexA];
+                indexA--;
+            } else {
+                A[indexToBeMerged] = B[indexB];
+                indexB--;
+            }
+            indexToBeMerged--;
         }
     }
 }

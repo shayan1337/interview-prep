@@ -15,4 +15,14 @@ class SortedMergeTest {
         Assertions.assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, A);
     }
 
+    @Test
+    void testOptimisedSortedMergeShouldMergeBIntoA() {
+        int[] A = {2, 3, 5, 9, 10, 0, 0, 0, 0, 0};
+        int[] B = {1, 4, 6, 7, 8};
+
+        SortedMerge.optimisedSortedMerge(A, B, 4);
+
+        Assertions.assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, A);
+    }
+
 }
