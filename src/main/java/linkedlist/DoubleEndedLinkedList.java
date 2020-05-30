@@ -47,8 +47,25 @@ public class DoubleEndedLinkedList {
         numberOfElements++;
     }
 
-    public void removeFirst() {
+    /**
+     * Removes first element from list
+     * @return <tt>true</tt> if element is safely deleted, <t>false</tt> otherwise
+     */
+    public boolean removeFirst() {
+        if (numberOfElements == 0)
+            return false;
 
+        if (numberOfElements == 1) {
+            head = null;
+            tail = null;
+            numberOfElements--;
+            return true;
+        }
+
+        head = head.next;
+        head.prev = null;
+        numberOfElements--;
+        return true;
     }
 
 
@@ -69,5 +86,9 @@ public class DoubleEndedLinkedList {
         }
 
         return values;
+    }
+
+    public int size() {
+        return numberOfElements;
     }
 }
