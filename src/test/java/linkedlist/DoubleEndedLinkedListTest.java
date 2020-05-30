@@ -1,7 +1,8 @@
 package linkedlist;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DoubleEndedLinkedListTest {
 
@@ -10,7 +11,7 @@ public class DoubleEndedLinkedListTest {
         DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
         doubleEndedLinkedList.addFirst(1);
 
-        Assertions.assertArrayEquals(new int[]{1}, doubleEndedLinkedList.values());
+        assertArrayEquals(new int[]{1}, doubleEndedLinkedList.values());
     }
 
     @Test
@@ -20,7 +21,7 @@ public class DoubleEndedLinkedListTest {
         doubleEndedLinkedList.addFirst(2);
         doubleEndedLinkedList.addFirst(3);
 
-        Assertions.assertArrayEquals(new int[]{3, 2, 1}, doubleEndedLinkedList.values());
+        assertArrayEquals(new int[]{3, 2, 1}, doubleEndedLinkedList.values());
     }
 
     @Test
@@ -28,9 +29,9 @@ public class DoubleEndedLinkedListTest {
         DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
         boolean res = doubleEndedLinkedList.removeFirst();
 
-        Assertions.assertFalse(res);
-        Assertions.assertEquals(0, doubleEndedLinkedList.size());
-        Assertions.assertArrayEquals(new int[]{}, doubleEndedLinkedList.values());
+        assertFalse(res);
+        assertEquals(0, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{}, doubleEndedLinkedList.values());
     }
 
     @Test
@@ -39,22 +40,22 @@ public class DoubleEndedLinkedListTest {
         doubleEndedLinkedList.addFirst(1);
         boolean res = doubleEndedLinkedList.removeFirst();
 
-        Assertions.assertTrue(res);
-        Assertions.assertEquals(0, doubleEndedLinkedList.size());
-        Assertions.assertArrayEquals(new int[]{}, doubleEndedLinkedList.values());
+        assertTrue(res);
+        assertEquals(0, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{}, doubleEndedLinkedList.values());
     }
 
     @Test
-    void testShouldRemoveFirstElemntWithListWithMultipleElements() {
+    void testShouldRemoveFirstElementWithListWithMultipleElements() {
         DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
         doubleEndedLinkedList.addFirst(1);
         doubleEndedLinkedList.addFirst(2);
         doubleEndedLinkedList.addFirst(3);
         boolean res = doubleEndedLinkedList.removeFirst();
 
-        Assertions.assertTrue(res);
-        Assertions.assertEquals(2, doubleEndedLinkedList.size());
-        Assertions.assertArrayEquals(new int[]{2, 1}, doubleEndedLinkedList.values());
+        assertTrue(res);
+        assertEquals(2, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{2, 1}, doubleEndedLinkedList.values());
     }
 
     @Test
@@ -68,8 +69,55 @@ public class DoubleEndedLinkedListTest {
         doubleEndedLinkedList.removeFirst();
         boolean res = doubleEndedLinkedList.removeFirst();
 
-        Assertions.assertTrue(res);
-        Assertions.assertEquals(2, doubleEndedLinkedList.size());
-        Assertions.assertArrayEquals(new int[]{2, 1}, doubleEndedLinkedList.values());
+        assertTrue(res);
+        assertEquals(2, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{2, 1}, doubleEndedLinkedList.values());
+    }
+
+    @Test
+    void testShouldAddElementToTheEndOfTheListWhenListIsEmpty() {
+        DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
+
+        doubleEndedLinkedList.addLast(1);
+
+        assertEquals(1, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{1}, doubleEndedLinkedList.values());
+    }
+
+    @Test
+    void testShouldAddElementToTheEndOfTheListWhenListHasOneElementOnly() {
+        DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
+        doubleEndedLinkedList.addFirst(1);
+
+        doubleEndedLinkedList.addLast(2);
+
+        assertEquals(2, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{1, 2}, doubleEndedLinkedList.values());
+    }
+
+    @Test
+    void testShouldAddElementToTheEndOfTheListWhenListHasMultipleElements() {
+        DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
+        doubleEndedLinkedList.addFirst(1);
+        doubleEndedLinkedList.addFirst(2);
+        doubleEndedLinkedList.addFirst(3);
+
+        doubleEndedLinkedList.addLast(4);
+
+        assertEquals(4, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{3, 2, 1, 4}, doubleEndedLinkedList.values());
+    }
+
+    @Test
+    void testShouldAddMultipleElementsToTheEndOfList() {
+        DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
+
+        doubleEndedLinkedList.addLast(1);
+        doubleEndedLinkedList.addLast(2);
+        doubleEndedLinkedList.addLast(3);
+
+        assertEquals(3, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{1, 2, 3}, doubleEndedLinkedList.values());
+
     }
 }

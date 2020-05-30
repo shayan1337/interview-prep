@@ -47,6 +47,7 @@ public class DoubleEndedLinkedList {
         numberOfElements++;
     }
 
+
     /**
      * Removes first element from list
      * @return <tt>true</tt> if element is safely deleted, <t>false</tt> otherwise
@@ -66,6 +67,27 @@ public class DoubleEndedLinkedList {
         head.prev = null;
         numberOfElements--;
         return true;
+    }
+
+
+    /**
+     * Adds an element to the end of the list
+     * @param data is the data to be inserted
+     */
+    public void addLast(int data) {
+        Node newNode = new Node(data);
+
+        if (numberOfElements == 0) {
+            head = newNode;
+            tail = newNode;
+            numberOfElements++;
+            return;
+        }
+
+        tail.next = newNode;
+        newNode.prev = tail;
+        tail = newNode;
+        numberOfElements++;
     }
 
 
