@@ -120,4 +120,56 @@ public class DoubleEndedLinkedListTest {
         assertArrayEquals(new int[]{1, 2, 3}, doubleEndedLinkedList.values());
 
     }
+
+    @Test
+    void testShouldReturnFalseWhenRemovingElementFromEmptyList() {
+        DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
+
+        boolean res = doubleEndedLinkedList.removeLast();
+
+        assertFalse(res);
+        assertEquals(0, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{}, doubleEndedLinkedList.values());
+    }
+
+    @Test
+    void testShouldRemoveTheOnlyElementInTheList() {
+        DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
+        doubleEndedLinkedList.addFirst(1);
+
+        boolean res = doubleEndedLinkedList.removeLast();
+
+        assertTrue(res);
+        assertEquals(0, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{}, doubleEndedLinkedList.values());
+    }
+
+    @Test
+    void testShouldRemoveTheLastElementFromTheList() {
+        DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
+        doubleEndedLinkedList.addFirst(1);
+        doubleEndedLinkedList.addFirst(2);
+
+        boolean res = doubleEndedLinkedList.removeLast();
+
+        assertTrue(res);
+        assertEquals(1, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{2}, doubleEndedLinkedList.values());
+    }
+
+    @Test
+    void testShouldRemoveMultipleElementsFromTheEndOfTheList() {
+        DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
+        doubleEndedLinkedList.addFirst(1);
+        doubleEndedLinkedList.addFirst(2);
+        doubleEndedLinkedList.addFirst(3);
+        doubleEndedLinkedList.addFirst(4);
+
+        doubleEndedLinkedList.removeLast();
+        boolean res = doubleEndedLinkedList.removeLast();
+
+        assertTrue(res);
+        assertEquals(2, doubleEndedLinkedList.size());
+        assertArrayEquals(new int[]{4, 3}, doubleEndedLinkedList.values());
+    }
 }

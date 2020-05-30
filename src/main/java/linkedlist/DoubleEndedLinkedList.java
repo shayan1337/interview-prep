@@ -92,6 +92,28 @@ public class DoubleEndedLinkedList {
 
 
     /**
+     * Removes an element from the end of the list
+     * @return <tt>true</tt> when element is safely deleted; <tt>false</tt> otherwise
+     */
+    public boolean removeLast() {
+        if (numberOfElements == 0)
+            return false;
+
+        if (numberOfElements == 1) {
+            head = null;
+            tail = null;
+            numberOfElements--;
+            return true;
+        }
+
+        tail = tail.prev;
+        tail.next = null;
+        numberOfElements--;
+        return true;
+    }
+
+
+    /**
      * Returns the elements in the list traversing from head
      * @return <tt>int[]</tt> of elements in the list traversing from head
      */
