@@ -12,18 +12,8 @@ package linkedlist;
  */
 public class DoubleEndedLinkedList {
 
-    static class Node {
-        int data;
-        Node next;
-        Node prev;
-
-        Node(int data) {
-            this.data = data;
-        }
-    }
-
-    private Node head;
-    private Node tail;
+    private DoublyLinkedNode head;
+    private DoublyLinkedNode tail;
     private int numberOfElements = 0;
 
 
@@ -32,7 +22,7 @@ public class DoubleEndedLinkedList {
      * @param data is the data to be inserted at the head of the list
      */
     public void addFirst(int data) {
-        Node newNode = new Node(data);
+        DoublyLinkedNode newNode = new DoublyLinkedNode(data);
 
         if (numberOfElements == 0) {
             head = newNode;
@@ -52,21 +42,23 @@ public class DoubleEndedLinkedList {
      * Removes first element from list
      * @return <tt>true</tt> if element is safely deleted, <t>false</tt> otherwise
      */
-    public boolean removeFirst() {
+    public DoublyLinkedNode removeFirst() {
         if (numberOfElements == 0)
-            return false;
+            return null;
 
         if (numberOfElements == 1) {
+            DoublyLinkedNode deleted = head;
             head = null;
             tail = null;
             numberOfElements--;
-            return true;
+            return deleted;
         }
 
+        DoublyLinkedNode deleted = head;
         head = head.next;
         head.prev = null;
         numberOfElements--;
-        return true;
+        return deleted;
     }
 
 
@@ -75,7 +67,7 @@ public class DoubleEndedLinkedList {
      * @param data is the data to be inserted
      */
     public void addLast(int data) {
-        Node newNode = new Node(data);
+        DoublyLinkedNode newNode = new DoublyLinkedNode(data);
 
         if (numberOfElements == 0) {
             head = newNode;
@@ -121,7 +113,7 @@ public class DoubleEndedLinkedList {
         int[] values = new int[numberOfElements];
         int index = 0;
 
-        Node current = head;
+        DoublyLinkedNode current = head;
 
         while(current != null) {
             values[index] = current.data;

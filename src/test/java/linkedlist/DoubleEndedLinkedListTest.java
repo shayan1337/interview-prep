@@ -27,9 +27,9 @@ public class DoubleEndedLinkedListTest {
     @Test
     void testShouldReturnFalseWhileRemovingElementFromEmptyArray() {
         DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
-        boolean res = doubleEndedLinkedList.removeFirst();
+        DoublyLinkedNode res = doubleEndedLinkedList.removeFirst();
 
-        assertFalse(res);
+        assertNull(res);
         assertEquals(0, doubleEndedLinkedList.size());
         assertArrayEquals(new int[]{}, doubleEndedLinkedList.values());
     }
@@ -38,9 +38,9 @@ public class DoubleEndedLinkedListTest {
     void testShouldRemoveFirstElementWithListWithOneElement() {
         DoubleEndedLinkedList doubleEndedLinkedList = new DoubleEndedLinkedList();
         doubleEndedLinkedList.addFirst(1);
-        boolean res = doubleEndedLinkedList.removeFirst();
+        DoublyLinkedNode res = doubleEndedLinkedList.removeFirst();
 
-        assertTrue(res);
+        assertEquals(new DoublyLinkedNode(1), res);
         assertEquals(0, doubleEndedLinkedList.size());
         assertArrayEquals(new int[]{}, doubleEndedLinkedList.values());
     }
@@ -51,9 +51,9 @@ public class DoubleEndedLinkedListTest {
         doubleEndedLinkedList.addFirst(1);
         doubleEndedLinkedList.addFirst(2);
         doubleEndedLinkedList.addFirst(3);
-        boolean res = doubleEndedLinkedList.removeFirst();
+        DoublyLinkedNode res = doubleEndedLinkedList.removeFirst();
 
-        assertTrue(res);
+        assertEquals(new DoublyLinkedNode(3), res);
         assertEquals(2, doubleEndedLinkedList.size());
         assertArrayEquals(new int[]{2, 1}, doubleEndedLinkedList.values());
     }
@@ -67,9 +67,9 @@ public class DoubleEndedLinkedListTest {
         doubleEndedLinkedList.addFirst(4);
 
         doubleEndedLinkedList.removeFirst();
-        boolean res = doubleEndedLinkedList.removeFirst();
+        DoublyLinkedNode res = doubleEndedLinkedList.removeFirst();
 
-        assertTrue(res);
+        assertEquals(new DoublyLinkedNode(3), res);
         assertEquals(2, doubleEndedLinkedList.size());
         assertArrayEquals(new int[]{2, 1}, doubleEndedLinkedList.values());
     }
