@@ -6,21 +6,12 @@ package linkedlist;
  */
 public class SinglyLinkedList {
 
-    static class Node {
-        int data;
-        Node next;
-
-        Node(int data) {
-            this.data = data;
-        }
-    }
-
-    private Node head;
+    private SinglyLinkedNode head;
     private int numberOfElements;
 
     public void addFirst(int data) {
 
-        Node newNode = new Node(data);
+        SinglyLinkedNode newNode = new SinglyLinkedNode(data);
 
         newNode.next = head;
 
@@ -38,10 +29,10 @@ public class SinglyLinkedList {
             return true;
         }
 
-        Node newNode = new Node(data);
+        SinglyLinkedNode newNode = new SinglyLinkedNode(data);
 
-        Node current = head;
-        Node previous = head;
+        SinglyLinkedNode current = head;
+        SinglyLinkedNode previous = head;
         int elementsTraversed = 0;
 
         while(current != null && elementsTraversed < position) {
@@ -56,18 +47,19 @@ public class SinglyLinkedList {
         return true;
     }
 
-    public boolean deleteAt(int position) {
+    public SinglyLinkedNode deleteAt(int position) {
         if (isEmpty() || position < 0 || position >= numberOfElements)
-            return false;
+            return null;
 
         if (position == 0) {
+            SinglyLinkedNode toBeDeleted = head;
             head = head.next;
             numberOfElements--;
-            return true;
+            return toBeDeleted;
         }
 
-        Node previous = head;
-        Node current = head;
+        SinglyLinkedNode previous = head;
+        SinglyLinkedNode current = head;
 
         int currentPos = 0;
 
@@ -79,10 +71,10 @@ public class SinglyLinkedList {
 
         previous.next = current.next;
         numberOfElements--;
-        return true;
+        return current;
     }
 
-    public boolean deleteFirst() {
+    public SinglyLinkedNode deleteFirst() {
         return deleteAt(0);
     }
 
@@ -94,7 +86,7 @@ public class SinglyLinkedList {
         int[] values = new int[numberOfElements];
         int index = 0;
 
-        Node current = head;
+        SinglyLinkedNode current = head;
 
         while(current != null) {
             values[index] = current.data;

@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 
 class SinglyLinkedListTest {
 
@@ -12,7 +14,7 @@ class SinglyLinkedListTest {
     void testAddFirstShouldAddElementsToTheHead1() {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
 
-        Assertions.assertArrayEquals(new int[]{}, singlyLinkedList.values());
+        assertArrayEquals(new int[]{}, singlyLinkedList.values());
     }
 
     @Test
@@ -23,7 +25,7 @@ class SinglyLinkedListTest {
         singlyLinkedList.addFirst(3);
         singlyLinkedList.addFirst(4);
 
-        Assertions.assertArrayEquals(new int[]{4, 3, 2, 1}, singlyLinkedList.values());
+        assertArrayEquals(new int[]{4, 3, 2, 1}, singlyLinkedList.values());
     }
 
     @Test
@@ -34,7 +36,7 @@ class SinglyLinkedListTest {
         singlyLinkedList.addFirst(2);
         singlyLinkedList.addFirst(1);
 
-        Assertions.assertArrayEquals(new int[]{1, 2, 3, 4}, singlyLinkedList.values());
+        assertArrayEquals(new int[]{1, 2, 3, 4}, singlyLinkedList.values());
     }
 
     @DisplayName("insertAt() should return false for invalid position of -1")
@@ -43,8 +45,8 @@ class SinglyLinkedListTest {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
         boolean inserted = singlyLinkedList.insertAt(12, -1);
 
-        Assertions.assertFalse(inserted);
-        Assertions.assertArrayEquals(new int[]{}, singlyLinkedList.values());
+        assertFalse(inserted);
+        assertArrayEquals(new int[]{}, singlyLinkedList.values());
     }
 
     @DisplayName("insertAt() should return false for position > nums of elements in list")
@@ -54,8 +56,8 @@ class SinglyLinkedListTest {
         singlyLinkedList.addFirst(1);
         boolean inserted = singlyLinkedList.insertAt(2, 2);
 
-        Assertions.assertFalse(inserted);
-        Assertions.assertArrayEquals(new int[]{1}, singlyLinkedList.values());
+        assertFalse(inserted);
+        assertArrayEquals(new int[]{1}, singlyLinkedList.values());
     }
 
     @DisplayName("insertAt() should insert element into empty list when position is 0")
@@ -64,8 +66,8 @@ class SinglyLinkedListTest {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
         boolean inserted = singlyLinkedList.insertAt(1, 0);
 
-        Assertions.assertTrue(inserted);
-        Assertions.assertArrayEquals(new int[]{1}, singlyLinkedList.values());
+        assertTrue(inserted);
+        assertArrayEquals(new int[]{1}, singlyLinkedList.values());
     }
 
     @DisplayName("insertAt() should insert element at the end of a non empty list")
@@ -77,8 +79,8 @@ class SinglyLinkedListTest {
         singlyLinkedList.addFirst(3);
         boolean inserted = singlyLinkedList.insertAt(4, 3);
 
-        Assertions.assertTrue(inserted);
-        Assertions.assertArrayEquals(new int[]{3, 2, 1, 4}, singlyLinkedList.values());
+        assertTrue(inserted);
+        assertArrayEquals(new int[]{3, 2, 1, 4}, singlyLinkedList.values());
     }
 
     @DisplayName("insertAt() should insert element at the middle of a non empty list")
@@ -91,28 +93,28 @@ class SinglyLinkedListTest {
         singlyLinkedList.addFirst(4);
         boolean inserted = singlyLinkedList.insertAt(5, 2);
 
-        Assertions.assertTrue(inserted);
-        Assertions.assertArrayEquals(new int[]{4, 3, 5, 2, 1}, singlyLinkedList.values());
+        assertTrue(inserted);
+        assertArrayEquals(new int[]{4, 3, 5, 2, 1}, singlyLinkedList.values());
     }
 
     @DisplayName("deleteAt() should return false empty list")
     @Test
     void testDeleteAt() {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
-        boolean deleted = singlyLinkedList.deleteAt(0);
+        SinglyLinkedNode deleted = singlyLinkedList.deleteAt(0);
 
-        Assertions.assertFalse(deleted);
-        Assertions.assertArrayEquals(new int[]{}, singlyLinkedList.values());
+        assertNull(deleted);
+        assertArrayEquals(new int[]{}, singlyLinkedList.values());
     }
 
     @DisplayName("deleteAt() should return false for invalid position of -1")
     @Test
     void testDeleteAt1() {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
-        boolean deleted = singlyLinkedList.deleteAt(-1);
+        SinglyLinkedNode deleted = singlyLinkedList.deleteAt(-1);
 
-        Assertions.assertFalse(deleted);
-        Assertions.assertArrayEquals(new int[]{}, singlyLinkedList.values());
+        assertNull(deleted);
+        assertArrayEquals(new int[]{}, singlyLinkedList.values());
     }
 
     @DisplayName("deleteAt() should return false for position > nums of elements in list")
@@ -120,10 +122,10 @@ class SinglyLinkedListTest {
     void testDeleteAt2() {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
         singlyLinkedList.addFirst(1);
-        boolean deleted = singlyLinkedList.deleteAt( 1);
+        SinglyLinkedNode deleted = singlyLinkedList.deleteAt( 1);
 
-        Assertions.assertFalse(deleted);
-        Assertions.assertArrayEquals(new int[]{1}, singlyLinkedList.values());
+        assertNull(deleted);
+        assertArrayEquals(new int[]{1}, singlyLinkedList.values());
     }
 
     @DisplayName("deleteAt() should delete the only element present in the list")
@@ -131,10 +133,10 @@ class SinglyLinkedListTest {
     void testDeleteAt4() {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
         singlyLinkedList.addFirst(1);
-        boolean deleted = singlyLinkedList.deleteAt(0);
+        SinglyLinkedNode deleted = singlyLinkedList.deleteAt(0);
 
-        Assertions.assertTrue(deleted);
-        Assertions.assertArrayEquals(new int[]{}, singlyLinkedList.values());
+        assertEquals(new SinglyLinkedNode(1), deleted);
+        assertArrayEquals(new int[]{}, singlyLinkedList.values());
     }
 
     @DisplayName("deleteAt() should delete element from position in a non empty list")
@@ -145,10 +147,10 @@ class SinglyLinkedListTest {
         singlyLinkedList.addFirst(2);
         singlyLinkedList.addFirst(3);
         singlyLinkedList.addFirst(4);
-        boolean deleted = singlyLinkedList.deleteAt(3);
+        SinglyLinkedNode deleted = singlyLinkedList.deleteAt(3);
 
-        Assertions.assertTrue(deleted);
-        Assertions.assertArrayEquals(new int[]{4, 3, 2}, singlyLinkedList.values());
+        assertEquals(new SinglyLinkedNode(1), deleted);
+        assertArrayEquals(new int[]{4, 3, 2}, singlyLinkedList.values());
     }
 
     @DisplayName("deleteFirst() should delete first element from list")
@@ -157,10 +159,10 @@ class SinglyLinkedListTest {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
         singlyLinkedList.addFirst(1);
         singlyLinkedList.addFirst(2);
-        boolean deleted = singlyLinkedList.deleteFirst();
+        SinglyLinkedNode deleted = singlyLinkedList.deleteFirst();
 
-        Assertions.assertTrue(deleted);
-        Assertions.assertArrayEquals(new int[]{1}, singlyLinkedList.values());
+        assertEquals(new SinglyLinkedNode(2), deleted);
+        assertArrayEquals(new int[]{1}, singlyLinkedList.values());
     }
 
 }
