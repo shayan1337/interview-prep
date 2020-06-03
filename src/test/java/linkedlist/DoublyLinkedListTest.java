@@ -1,7 +1,8 @@
 package linkedlist;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class DoublyLinkedListTest {
 
@@ -9,7 +10,7 @@ class DoublyLinkedListTest {
     void testIteratingThroughAnEmptyListShouldReturnEmptyList() {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
 
-        Assertions.assertArrayEquals(new int[]{}, doublyLinkedList.values());
+        assertArrayEquals(new int[]{}, doublyLinkedList.values());
     }
 
     @Test
@@ -19,56 +20,56 @@ class DoublyLinkedListTest {
         doublyLinkedList.add(2);
         doublyLinkedList.add(3);
 
-        Assertions.assertArrayEquals(new int[]{3, 2, 1}, doublyLinkedList.values());
+        assertArrayEquals(new int[]{3, 2, 1}, doublyLinkedList.values());
     }
 
     @Test
     void testShouldReturnFalseForEmptyList() {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
-        boolean res = doublyLinkedList.remove(0);
+        DoublyLinkedNode res = doublyLinkedList.remove(0);
 
-        Assertions.assertFalse(res);
-        Assertions.assertArrayEquals(new int[]{}, doublyLinkedList.values());
+        assertNull(res);
+        assertArrayEquals(new int[]{}, doublyLinkedList.values());
     }
 
     @Test
     void testShouldReturnFalseForInvalidPosition() {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
         doublyLinkedList.add(20);
-        boolean res = doublyLinkedList.remove(-1);
+        DoublyLinkedNode res = doublyLinkedList.remove(-1);
 
-        Assertions.assertFalse(res);
-        Assertions.assertArrayEquals(new int[]{20}, doublyLinkedList.values());
+        assertNull(res);
+        assertArrayEquals(new int[]{20}, doublyLinkedList.values());
     }
 
     @Test
     void testShouldReturnFalseForPositionEqualToNumberOfElementsInList() {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
         doublyLinkedList.add(20);
-        boolean res = doublyLinkedList.remove(1);
+        DoublyLinkedNode res = doublyLinkedList.remove(1);
 
-        Assertions.assertFalse(res);
-        Assertions.assertArrayEquals(new int[]{20}, doublyLinkedList.values());
+        assertNull(res);
+        assertArrayEquals(new int[]{20}, doublyLinkedList.values());
     }
 
     @Test
     void testShouldReturnFalseForPositionGreaterThanNumberOfElementsInList() {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
         doublyLinkedList.add(20);
-        boolean res = doublyLinkedList.remove(2);
+        DoublyLinkedNode res = doublyLinkedList.remove(2);
 
-        Assertions.assertFalse(res);
-        Assertions.assertArrayEquals(new int[]{20}, doublyLinkedList.values());
+        assertNull(res);
+        assertArrayEquals(new int[]{20}, doublyLinkedList.values());
     }
 
     @Test
     void testShouldRemoveTheOnlyElementInTheList() {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
         doublyLinkedList.add(20);
-        boolean res = doublyLinkedList.remove(0);
+        DoublyLinkedNode res = doublyLinkedList.remove(0);
 
-        Assertions.assertTrue(res);
-        Assertions.assertArrayEquals(new int[]{}, doublyLinkedList.values());
+        assertEquals(new DoublyLinkedNode(20), res);
+        assertArrayEquals(new int[]{}, doublyLinkedList.values());
     }
 
     @Test
@@ -77,10 +78,10 @@ class DoublyLinkedListTest {
         doublyLinkedList.add(20);
         doublyLinkedList.add(30);
         doublyLinkedList.add(40);
-        boolean res = doublyLinkedList.remove(1);
+        DoublyLinkedNode res = doublyLinkedList.remove(1);
 
-        Assertions.assertTrue(res);
-        Assertions.assertArrayEquals(new int[]{40, 20}, doublyLinkedList.values());
+        assertEquals(new DoublyLinkedNode(30), res);
+        assertArrayEquals(new int[]{40, 20}, doublyLinkedList.values());
     }
 
     @Test
@@ -89,10 +90,10 @@ class DoublyLinkedListTest {
         doublyLinkedList.add(20);
         doublyLinkedList.add(30);
         doublyLinkedList.add(40);
-        boolean res = doublyLinkedList.remove(2);
+        DoublyLinkedNode res = doublyLinkedList.remove(2);
 
-        Assertions.assertTrue(res);
-        Assertions.assertArrayEquals(new int[]{40, 30}, doublyLinkedList.values());
+        assertEquals(new DoublyLinkedNode(20), res);
+        assertArrayEquals(new int[]{40, 30}, doublyLinkedList.values());
     }
 
     @Test
@@ -100,7 +101,7 @@ class DoublyLinkedListTest {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
         doublyLinkedList.insert(1, -1);
 
-        Assertions.assertArrayEquals(new int[]{}, doublyLinkedList.values());
+        assertArrayEquals(new int[]{}, doublyLinkedList.values());
     }
 
     @Test
@@ -110,7 +111,7 @@ class DoublyLinkedListTest {
 
         doublyLinkedList.insert(2,2);
 
-        Assertions.assertArrayEquals(new int[]{1}, doublyLinkedList.values());
+        assertArrayEquals(new int[]{1}, doublyLinkedList.values());
     }
 
     @Test
@@ -119,7 +120,7 @@ class DoublyLinkedListTest {
 
         doublyLinkedList.insert(1,0);
 
-        Assertions.assertArrayEquals(new int[]{1}, doublyLinkedList.values());
+        assertArrayEquals(new int[]{1}, doublyLinkedList.values());
     }
 
     @Test
@@ -131,7 +132,7 @@ class DoublyLinkedListTest {
 
         doublyLinkedList.insert(4,0);
 
-        Assertions.assertArrayEquals(new int[]{4, 3, 2, 1}, doublyLinkedList.values());
+        assertArrayEquals(new int[]{4, 3, 2, 1}, doublyLinkedList.values());
     }
 
     @Test
@@ -143,7 +144,7 @@ class DoublyLinkedListTest {
 
         doublyLinkedList.insert(4,1);
 
-        Assertions.assertArrayEquals(new int[]{3, 4, 2, 1}, doublyLinkedList.values());
+        assertArrayEquals(new int[]{3, 4, 2, 1}, doublyLinkedList.values());
     }
 
     @Test
@@ -155,6 +156,6 @@ class DoublyLinkedListTest {
 
         doublyLinkedList.insert(4,3);
 
-        Assertions.assertArrayEquals(new int[]{3, 2, 1, 4}, doublyLinkedList.values());
+        assertArrayEquals(new int[]{3, 2, 1, 4}, doublyLinkedList.values());
     }
 }

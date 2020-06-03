@@ -9,17 +9,7 @@ package linkedlist;
  */
 public class DoublyLinkedList {
 
-    static class Node {
-        private int data;
-        private Node next;
-        private Node prev;
-
-        Node(int data) {
-            this.data = data;
-        }
-    }
-
-    private Node head;
+    private DoublyLinkedNode head;
     private int numberOfElements = 0;
 
 
@@ -28,7 +18,7 @@ public class DoublyLinkedList {
      * @param data is the data to be added
      */
     public void add(int data) {
-        Node newNode = new Node(data);
+        DoublyLinkedNode newNode = new DoublyLinkedNode(data);
 
         newNode.next = head;
         if ( numberOfElements != 0) {
@@ -44,12 +34,12 @@ public class DoublyLinkedList {
      * @param pos is the position of the element to be deleted
      * @return <tt>true</tt> if the element has been successfully deleted; <tt>false</tt> otherwise
      */
-    public boolean remove(int pos) {
+    public DoublyLinkedNode remove(int pos) {
         if (numberOfElements == 0 || pos < 0 || pos >= numberOfElements)
-            return false;
+            return null;
 
         int currentPosition = 0;
-        Node current = head;
+        DoublyLinkedNode current = head;
 
         while(currentPosition < pos) {
             current = current.next;
@@ -63,7 +53,7 @@ public class DoublyLinkedList {
         }
 
         numberOfElements--;
-        return true;
+        return current;
     }
 
 
@@ -77,8 +67,8 @@ public class DoublyLinkedList {
             return;
 
         int currentPosition = 0;
-        Node current = head;
-        Node previous = head;
+        DoublyLinkedNode current = head;
+        DoublyLinkedNode previous = head;
 
         while(currentPosition < pos) {
             previous = current;
@@ -91,7 +81,7 @@ public class DoublyLinkedList {
             return;
         }
 
-        Node newNode = new Node(data);
+        DoublyLinkedNode newNode = new DoublyLinkedNode(data);
 
         newNode.next = current;
         newNode.prev = previous;
@@ -113,7 +103,7 @@ public class DoublyLinkedList {
         int[] values = new int[numberOfElements];
         int index = 0;
 
-        Node current = head;
+        DoublyLinkedNode current = head;
 
         while(current != null) {
             values[index] = current.data;
