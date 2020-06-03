@@ -1,8 +1,10 @@
+package stack;
+
 import linkedlist.SinglyLinkedList;
 import linkedlist.SinglyLinkedNode;
 
 /**
- * Represents a Stack that stores integer elements. Apis include:
+ * Represents a stack.Stack that stores integer elements. Apis include:
  * 1) push(int) -> pushes an integer value into stack
  * 2) pop() -> pop the latest value from the stack
  */
