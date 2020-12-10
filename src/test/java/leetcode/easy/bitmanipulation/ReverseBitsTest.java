@@ -7,7 +7,7 @@ class ReverseBitsTest {
 
     @Test
     void testReverseBits() {
-        long res = ReverseBits.reverseBits(43);
-        Assertions.assertEquals(-738197504, res);
+        long res = ReverseBits.reverseBits(-3);
+        Assertions.assertEquals(-1073741825, res);
     }
 }
