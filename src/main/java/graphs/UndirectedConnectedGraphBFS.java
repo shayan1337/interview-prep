@@ -3,7 +3,7 @@ package graphs;
 import java.util.*;
 
 // BFS of an undirected and connected graph given a reference to a single graph node
-public class UndirectedGraphBFS {
+public class UndirectedConnectedGraphBFS {
 
     public List<GraphNode> BFS(GraphNode graphNode) {
         List<GraphNode> allNodes = new ArrayList<>();
